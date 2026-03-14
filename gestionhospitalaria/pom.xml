@@ -2,140 +2,105 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- 
-        The link to the hibernate-search parent POM only exists out of convenience since we are creating
-        this archetype from an existing module of the Hibernate Search code base.
-        If you want to know more about this process check the maven-archetype-plugin documentation
-        http://maven.apache.org/archetype/maven-archetype-plugin, especially the goal create-from-project
-      
-        If you want to use this quick-start project as the base for your own application you should remove the
-        <parent> entry. See also the other pointers in this pom!
-    -->
-    <parent>
-        <artifactId>hibernate-search-parent</artifactId>
-        <groupId>org.hibernate</groupId>
-        <version>4.2.0.Final</version>
-    </parent>
-
-    <groupId>com.pachedev</groupId>
-    <artifactId>gestionhospitalaria</artifactId>
-    <packaging>jar</packaging>
-    <name>Hibernate Search Quickstart</name>
+    <groupId>com.dam</groupId>
+    <artifactId>techcorp</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <url>http://www.myorganization.org</url>
-    <description>Hibernate Search quickstart is an archetype for a minimal application using fulltext query
-        capabilities.</description>
+    <packaging>jar</packaging>
+    <name>Proyecto Hibernate JPA - Acceso a Datos</name>
 
-    <scm>
-        <connection>scm:git:git://github.com/hibernate/hibernate-search.git</connection>
-        <developerConnection>scm:git:git@github.com:hibernate/hibernate-search.git</developerConnection>
-        <url>http://github.com/hibernate/hibernate-search</url>
-    </scm>
+    <description>Proyecto educativo para el módulo Acceso a Datos - DAM</description>
 
-    <organization>
-        <name>Hibernate</name>
-        <url>http://www.hibernate.org</url>
-    </organization>
+      <properties>
+        <!-- Versiones de Java -->
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-    <licenses>
-        <license>
-            <name>GNU Lesser General Public License</name>
-            <url>http://www.gnu.org/licenses/lgpl-2.1.html</url>
-        </license>
-    </licenses>
+        <!-- Versiones de dependencias -->
+        <hibernate.version>7.2.0.Final</hibernate.version>
+        <mysql.version>8.3.0</mysql.version>
+        <hikaricp.version>5.1.0</hikaricp.version>
+        <junit.version>5.10.1</junit.version>
+    </properties>
 
-    <developers>
-        <developer>
-            <id>epbernard</id>
-            <name>Emmanuel Bernard</name>
-            <email>emmanuel@hibernate.org</email>
-            <url>http://in.relation.to/Bloggers/Emmanuel</url>
-        </developer>
-        <developer>
-            <id>hardy.ferentschik</id>
-            <name>Hardy Ferentschik</name>
-            <email>hardy@hibernate.org</email>
-            <url>http://in.relation.to/Bloggers/Hardy</url>
-        </developer>
-        <developer>
-            <id>sannegrinovero</id>
-            <name>Sanne Grinovero</name>
-            <email>sanne@hibernate.org</email>
-            <url>http://in.relation.to/Bloggers/Sanne</url>
-        </developer>
-    </developers>
-
-    <dependencies>
-        <!-- Hibernate Core -->
+        <dependencies>
+        <!-- Hibernate Core (incluye JPA 3.2) -->
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>7.2.0.Final</version>
+            <version>${hibernate.version}</version>
         </dependency>
-        
-        <!-- MySQL Driver -->
+        <!-- Driver MySQL -->
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
-            <version>9.5.0</version>
+            <version>${mysql.version}</version>
         </dependency>
-        
-        <!-- PostgreSQL Driver -->
+        <!-- Alternativa: PostgreSQL -->
+        <!--
         <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.7.8</version>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>42.7.1</version>
         </dependency>
-        
-        <!-- Bean Validation -->
+        -->
+        <!-- Pool de conexiones HikariCP (recomendado) -->
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>${hikaricp.version}</version>
+        </dependency>
+        <!-- SLF4J para logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>2.0.9</version>
+        </dependency>
+        <!-- JUnit 5 para testing -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- Hibernate Validator (Bean Validation) -->
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>9.1.0.Final</version>
         </dependency>
-        
-        <!-- SLF4J (Logging) -->
+        <!-- Integración de Hibernate con HikariCP -->
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>2.0.17</version>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-hikaricp</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <!-- Jakarta Expression Language (necesario para Hibernate Validator) -->
+        <dependency>
+            <groupId>org.glassfish.expressly</groupId>
+            <artifactId>expressly</artifactId>
+            <version>5.0.0</version>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
+            <!-- Plugin de compilación -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                <source>21</source>
+                <target>21</target>
                 </configuration>
             </plugin>
+            <!-- Plugin para ejecutar tests -->
             <plugin>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.1.2</version>
             </plugin>
         </plugins>
-    </build>
-    <profiles>
-        <!-- When removing the <parent> node the profile can be removed -->
-        <profile>
-            <id>archetype</id>
-            <activation>
-                <file>
-                    <exists>archetype.properties</exists>
-                </file>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-archetype-plugin</artifactId>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
+     </build>
 </project>

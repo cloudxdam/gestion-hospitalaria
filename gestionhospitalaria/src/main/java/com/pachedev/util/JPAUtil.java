@@ -1,4 +1,4 @@
-package com.academia.util;
+package com.pachedev.util;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -16,7 +16,7 @@ import jakarta.persistence.Persistence;
  */
 public class JPAUtil {
 
-    private static final String PERSISTENCE_UTIL_NAME = "techacademyPU";
+    private static final String PERSISTENCE_UTIL_NAME = "gestionhospitalariaPU";
     private static EntityManagerFactory emf;
 
     // inicialización estática

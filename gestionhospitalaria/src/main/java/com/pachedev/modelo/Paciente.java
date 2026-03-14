@@ -1,6 +1,7 @@
 package com.pachedev.modelo;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -55,7 +56,7 @@ public class Paciente {
     private String direccion;
 
     @Column(name = "activo")
-    private Boolean activo = true;
+    private boolean activo = true;
 
     @OneToMany(mappedBy = "paciente")
     private List<Cita> citas;
@@ -64,6 +65,112 @@ public class Paciente {
     private List<Historial> historiales;
 
     @OneToMany(mappedBy = "paciente")
-    private List<Ingreso> ingresos;
+    private List<Ingreso> ingresos = new ArrayList<>();
+
+    public Paciente() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public String getGrupoSanguineo() {
+        return grupoSanguineo;
+    }
+
+    public void setGrupoSanguineo(String grupoSanguineo) {
+        this.grupoSanguineo = grupoSanguineo;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+
+    public List<Cita> getCitas() {
+        return citas;
+    }
+
+    public void setCitas(List<Cita> citas) {
+        this.citas = citas;
+    }
+
+    public List<Historial> getHistoriales() {
+        return historiales;
+    }
+
+    public void setHistoriales(List<Historial> historiales) {
+        this.historiales = historiales;
+    }
+
+    public List<Ingreso> getIngresos() {
+        return ingresos;
+    }
+
+    public void setIngresos(List<Ingreso> ingresos) {
+        this.ingresos = ingresos;
+    }
+
+    @Override
+    public String toString() {
+        return "Paciente [id=" + id + ", nombre=" + nombre + ", dni=" + dni + ", email=" + email + ", telefono="
+                + telefono + ", fechaNacimiento=" + fechaNacimiento + ", grupoSanguineo=" + grupoSanguineo
+                + ", direccion=" + direccion + ", activo=" + activo + "]";
+    }
 
 }
