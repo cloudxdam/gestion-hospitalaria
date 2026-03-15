@@ -9,15 +9,19 @@
             <!-- Provider JPA (Hibernate) -->
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <!-- Clases de entidad (opcional si se usa auto-detección) -->
-        <class>com.pachedev.gestionhospitalaria.cita</class>
-        <class>com.pachedev.gestionhospitalaria.departamento</class>
-        <class>com.pachedev.gestionhospitalaria.historial</class>
-        <class>com.pachedev.gestionhospitalaria.ingreso</class>
-        <class>com.pachedev.gestionhospitalaria.medicamento</class>
-        <class>com.pachedev.gestionhospitalaria.paciente</class>
-        <class>com.pachedev.gestionhospitalaria.personalmedico</class>
-        <class>com.pachedev.gestionhospitalaria.tratamiento</class>
-        <class>com.pachedev.gestionhospitalaria.tratamientomedicamento</class>
+        <class>com.pachedev.modelo.Administrativo</class>
+        <class>com.pachedev.modelo.Cita</class>
+        <class>com.pachedev.modelo.Departamento</class>
+        <class>com.pachedev.modelo.Enfermero</class>
+        <class>com.pachedev.modelo.Habitacion</class>
+        <class>com.pachedev.modelo.Historial</class>
+        <class>com.pachedev.modelo.Ingreso</class>
+        <class>com.pachedev.modelo.Medicamento</class>
+        <class>com.pachedev.modelo.Medico</class>
+        <class>com.pachedev.modelo.Paciente</class>
+        <class>com.pachedev.modelo.Personalmedico</class>
+        <class>com.pachedev.modelo.Tratamiento</class>
+        <class>com.pachedev.modelo.TratamientoMedicamento</class>
         <!-- Excluir clases no listadas (false para auto-detección) -->
         <exclude-unlisted-classes>false</exclude-unlisted-classes>        
         
@@ -34,7 +38,7 @@
             <property name="jakarta.persistence.schema-generation.scripts.action" value="create"/>
             <property name="jakarta.persistence.schema-generation.scripts.create-target" value="create_db.sql"/>
             <property name="jakarta.persistence.jdbc.url"
-            value="jdbc:mysql://127.0.0.1:3306/academia_db?serverTimezone=Europe/Madrid"/>
+            value="jdbc:mysql://127.0.0.1:3306/hospital_db?serverTimezone=Europe/Madrid"/>
             <!-- Usuario y contraseña -->
             <property name="jakarta.persistence.jdbc.user" value="root"/>
             <property name="jakarta.persistence.jdbc.password" value="password"/>
