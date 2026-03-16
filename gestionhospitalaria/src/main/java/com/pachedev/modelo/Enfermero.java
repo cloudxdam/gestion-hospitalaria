@@ -3,6 +3,7 @@ package com.pachedev.modelo;
 import com.pachedev.enums.Turno;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -10,6 +11,7 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 
 @Entity
+@DiscriminatorValue("ENFERMERO")
 @Table(name = "enfermeros")
 public class Enfermero extends PersonalMedico {
 

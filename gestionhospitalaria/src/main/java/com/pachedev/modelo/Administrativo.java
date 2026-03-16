@@ -1,12 +1,14 @@
 package com.pachedev.modelo;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
+@DiscriminatorValue("ADMINISTRATIVO")
 @Table(name = "administrativos")
 public class Administrativo extends PersonalMedico {
 

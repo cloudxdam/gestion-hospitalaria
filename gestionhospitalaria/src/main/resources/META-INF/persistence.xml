@@ -19,7 +19,7 @@
         <class>com.pachedev.modelo.Medicamento</class>
         <class>com.pachedev.modelo.Medico</class>
         <class>com.pachedev.modelo.Paciente</class>
-        <class>com.pachedev.modelo.Personalmedico</class>
+        <class>com.pachedev.modelo.PersonalMedico</class>
         <class>com.pachedev.modelo.Tratamiento</class>
         <class>com.pachedev.modelo.TratamientoMedicamento</class>
         <!-- Excluir clases no listadas (false para auto-detección) -->
@@ -30,13 +30,6 @@
             <!-- CONFIGURACIÓN DE CONEXIÓN A BASE DE DATOS -->
             <!-- ========================================== -->
             <!-- URL de conexión -->
-            <!--
-            <property name="jakarta.persistence.schema-generation.scripts.action" value="create"/>
-            <property name="jakarta.persistence.schema-generation.scripts.create-target" value="create_db.sql"/>
-            -->
-            <property name="jakarta.persistence.schema-generation.database.action" value="update"/>
-            <property name="jakarta.persistence.schema-generation.scripts.action" value="create"/>
-            <property name="jakarta.persistence.schema-generation.scripts.create-target" value="create_db.sql"/>
             <property name="jakarta.persistence.jdbc.url"
             value="jdbc:mysql://127.0.0.1:3306/hospital_db?serverTimezone=Europe/Madrid"/>
             <!-- Usuario y contraseña -->
@@ -53,7 +46,7 @@
             value="org.hibernate.dialect.MySQLDialect"/>
             <!-- Gestión automática del esquema de BD -->
             <!-- Valores: none, validate, update, create, create-drop -->
-            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
             <!-- Mostrar SQL generado por Hibernate -->
             <property name="hibernate.show_sql" value="true"/>
             <!-- Formatear SQL para mejor legibilidad -->

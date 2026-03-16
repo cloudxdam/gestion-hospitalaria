@@ -3,6 +3,8 @@ package com.pachedev.modelo;
 import java.time.LocalDate;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -19,6 +21,7 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "tipo_personal", discriminatorType = DiscriminatorType.STRING)
 @Table(name = "personal_medico")
 public abstract class PersonalMedico {
 
